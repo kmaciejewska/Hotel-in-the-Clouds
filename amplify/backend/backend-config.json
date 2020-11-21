@@ -20,5 +20,26 @@
         }
       ]
     }
+  },
+  "function": {
+    "cloudempire90695090": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    },
+    "addUserToClients": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cloudempire90695090",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
