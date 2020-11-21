@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "CloudEmpire",
+  "projectName": "cloud-empire",
   "version": "3.0",
   "frontend": "javascript",
   "javascript": {
