@@ -16,6 +16,41 @@
         "cognitocf0c6096": {},
         "userPoolGroups": {}
       }
+    },
+    "nonCFNdata": {
+      "function": {
+        "cloudempire90695090": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "WA7ifF3fry3Zgyj1nlgwepgxhvMKbuDxllQdC2DrcK0="
+            }
+          },
+          "providerPlugin": "awscloudformation",
+          "service": "LambdaLayer",
+          "build": true,
+          "lastPackageTimeStamp": "2020-11-21T14:18:02.856Z",
+          "distZipFilename": "cloudempire90695090-build.zip",
+          "s3Bucket": {
+            "deploymentBucketName": "amplify-authcra-devy-122252-deployment",
+            "s3Key": "amplify-builds/cloudempire90695090-build.zip"
+          },
+          "providerMetadata": {
+            "s3TemplateURL": "https://s3.amazonaws.com/amplify-authcra-devy-122252-deployment/amplify-cfn-templates/function/cloudempire90695090-awscloudformation-template.json",
+            "logicalId": "functioncloudempire90695090"
+          },
+          "lastPushTimeStamp": "2020-11-21T14:57:18.862Z",
+          "output": {
+            "Region": "us-west-2",
+            "Arn": "arn:aws:lambda:us-west-2:960932775830:layer:cloudempire90695090-devy:1"
+          },
+          "lastPushDirHash": "lzXMUDrOV7pAoBAzQPT63+b1XFQ="
+        }
+      }
     }
   }
 }
