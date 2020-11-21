@@ -1,0 +1,9 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "cloudempire80232a1f",
+      "version": 1
+    }
+  ]
+}

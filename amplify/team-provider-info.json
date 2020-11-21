@@ -14,6 +14,28 @@
     "categories": {
       "auth": {
         "cognitocf0c6096": {}
+      },
+      "function": {
+        "cloudempire80232a1f": {
+          "deploymentBucketName": "amplify-authcra-devy-122252-deployment",
+          "s3Key": "amplify-builds/cloudempire80232a1f-build.zip"
+        }
+      }
+    },
+    "nonCFNdata": {
+      "function": {
+        "cloudempire80232a1f": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "nUzjY90x41MupW+rxbqoAw1eQyyyb7CZbxCHDJWTfm8="
+            }
+          }
+        }
       }
     }
   }
