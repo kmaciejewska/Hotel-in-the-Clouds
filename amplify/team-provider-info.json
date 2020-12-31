@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "cognitocf0c6096": {}
+        "cognitocf0c6096": {},
+        "userPoolGroups": {}
       },
       "function": {
         "cloudempire80232a1f": {
@@ -32,7 +33,7 @@
                   "type": "private"
                 }
               ],
-              "hash": "nUzjY90x41MupW+rxbqoAw1eQyyyb7CZbxCHDJWTfm8="
+              "hash": "p984OnAFtzyx1yjV/KoBkGQBQjFO4dSFLw4Hk5Qbefk="
             }
           }
         }
