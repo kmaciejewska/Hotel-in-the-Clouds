@@ -1,0 +1,98 @@
+type Room
+  @model(subscriptions: null)   #create dynamoDB table for this type and a template for CRUD
+  @auth(
+    rules: [
+      # allow admins to create, update and delete rooms
+      { allow: groups, groups: ["Admins"] }
+      # allow all authenticated users to view rooms
+      { allow: private, operations: [read] }
+      # allow all guest users (not authenticated) to view rooms
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  type: String
+  description: String
+  price: Float
+  capacity: Int
+  pets: Boolean
+  image: String
+  featured: Boolean
+  breakfast: Boolean
+  cleaniness: String
+
+  bookings: [RoomBooking] @connection(keyName: "byRoom", fields: ["id"])    #rooms may have multiple bookings
+}
+
+#link rooms with bookings, handles many to many relationships
+#user can have many bookings
+type RoomBooking
+  @model(queries: null, subscriptions: null)
+  @key(name: "byRoom", fields: ["room_id", "booking_id"])   #we are using secondary indexes to link everything together
+  @key(name: "byBooking", fields: ["booking_id", "room_id"])
+  @auth(
+    rules: [
+      # allow admins to create roombookings for customers by using customer email in lambda
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: groups, groups: ["Admins"] }
+    ]
+  ) {
+  id: ID!
+  room_id: ID!
+  booking_id: ID!
+  room: Room @connection(fields: ["room_id"])
+  booking: Booking @connection(fields: ["booking_id"])
+}
+
+type Booking
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # only owner can see his bookings
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      # allow admins to view bookings
+      { allow: groups, groups: ["Admins"] }
+    ]
+  )
+  @key(name: "byUser", fields: ["user"]) {  #admins will be able to query bookings not only by ID but also by particular users
+  id: ID!
+  user: String!
+  dateFrom: String
+  dateTo: String
+  total: Float
+
+  rooms: [RoomBooking] @connection(keyName: "byBooking", fields: ["id"])    #bookings may have multiple rooms
+}
+
+
+#custom mutation for processing bookings
+type Mutation {     
+  processBooking(input: ProcessBookingInput!): BookingStatus    #so it takes ProcessBookingInput and returns BookingStatus as result 
+    @function(name: "processPayment-${env}")
+    @function(name: "createBooking-${env}")
+}
+
+input ProcessBookingInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  token: String!        #token from stripe 
+  address: String       #?
+}
+
+enum BookingStatus {
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  name: String
+  type: String
+  image: String
+  price: Float
+  capacity: Int
+  breakfast: Boolean
+  pets: Boolean
+}
