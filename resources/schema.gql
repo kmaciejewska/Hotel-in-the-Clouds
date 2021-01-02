@@ -21,7 +21,6 @@ type Room
   featured: Boolean
   breakfast: Boolean
   cleaniness: String
-
   bookings: [RoomBooking] @connection(keyName: "byRoom", fields: ["id"])    #rooms may have multiple bookings
 }
 
@@ -64,7 +63,6 @@ type Booking
 
   rooms: [RoomBooking] @connection(keyName: "byBooking", fields: ["id"])    #bookings may have multiple rooms
 }
-
 
 #custom mutation for processing bookings
 type Mutation {     
