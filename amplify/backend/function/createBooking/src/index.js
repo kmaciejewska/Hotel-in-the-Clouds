@@ -4,7 +4,7 @@ const documentClient = new AWS.DynamoDB.DocumentClient();
 
 const BOOKING_TABLE = "Booking-4ihkwg33pjf75if6e73i2qpqxu-devy";
 const BOOKING_TYPE = "Booking";
-const ROOM_BOOKING_TABLE = "RoomBooking-4ihkwg33pjf75if6e73i2qpqxu-devy";
+const ROOM_BOOKING_TABLE = "RoomBooking-4ihkwg33pjf75if6e73i2qpqxu-devys";
 const ROOM_BOOKING_TYPE = "RoomBooking";
 
 
