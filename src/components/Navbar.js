@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import logo from '../images/logo2.svg'
 import { FaAlignRight } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { UserContext, UserProvider } from '../contextU'
+import { UserContext, UserProvider } from '../context/contextU'
 
 
 

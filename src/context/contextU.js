@@ -1,5 +1,5 @@
 import React, {Component } from  'react'
-import img from "./images/profil.jpg";
+import img from "../images/profil.jpg";
 
 const UserContext = React.createContext(); 
 

@@ -6,7 +6,12 @@ import Amplify, { Auth } from 'aws-amplify';
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import {Link} from 'react-router-dom'
 import { createRoom } from '../api/mutations'
+import config from '../aws-exports'
 
+const {
+    aws_user_files_s3_bucket_region: region,
+    aws_user_files_s3_bucket: bucket
+} = config
 
 
 const Admin = () => {
@@ -28,7 +33,7 @@ const Admin = () => {
   }, [])
   //
 
-  const [image, setImage] = useState(null);
+    const [image, setImage] = useState(null);
     const [roomDetails, setRoomDetails] = useState({ name: "", type: "", description: "", image: "", capacity: "", 
         price: "", cleaniness: ""});
 
@@ -44,7 +49,7 @@ const Admin = () => {
         }
     }
 
-    /*const handleImageUpload = async (e) => {
+    const handleImageUpload = async (e) => {
         e.preventDefault();
         const file = e.target.files[0];
         const extension = file.name.split(".")[1];
@@ -60,11 +65,11 @@ const Admin = () => {
             // Retrieve the uploaded file to display
             const image = await Storage.get(key, { level: 'public' })
             setImage(image);
-            setBookDetails({ ...bookDetails, image: url });
+            setRoomDetails({ ...roomDetails, image: url });
         } catch (err) {
             console.log(err);
         }
-    }*/
+    }
 
 
     return (
@@ -79,7 +84,8 @@ const Admin = () => {
                         <div className="form-image">
                             {image ? <img className="image-preview" src={image} alt="" /> : <input
                                 type="file"
-                                accept="image/jpg" />}
+                                accept="image/jpg" 
+                                onChange={(e) => handleImageUpload(e)}/>}
 
                         </div>
                         <div className="form-fields">

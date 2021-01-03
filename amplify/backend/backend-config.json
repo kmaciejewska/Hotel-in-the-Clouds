@@ -77,7 +77,7 @@
               "authenticationType": "API_KEY",
               "apiKeyConfig": {
                 "apiKeyExpirationDays": 365,
-                "description": "guest users to view rooms"
+                "description": "guest users to view the rooms"
               }
             }
           ]

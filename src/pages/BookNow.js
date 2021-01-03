@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RoomContext } from '../context'
+import { RoomContext } from '../context/context'
 import { Link } from 'react-router-dom'
 
 //library used to calculate time

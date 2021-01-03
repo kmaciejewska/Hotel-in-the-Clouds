@@ -1,5 +1,6 @@
 import React, {Component } from  'react'
-import items from "./data";
+import { API, graphqlOperation } from "aws-amplify";
+import { listRooms } from "../api/queries";
 
 
 const RoomContext = React.createContext();
@@ -25,25 +26,36 @@ Component {
   };
 
   //getData from Database
-   
+  fetchRooms = async () => {
+    try {
+      
+      // Switch authMode to API_KEY for public access
+      const { data } = await API.graphql({
+        query: listRooms,
+        authMode: "API_KEY"
+      });
+      let rooms = this.formatData(data.listRooms.items);
+      let featuredRooms = rooms.filter(room => room.featured === true);
+
+      let maxPrice = Math.max(...rooms.map(item => item.price));
+      let maxSize = Math.max(...rooms.map(item => item.size));
+      this.setState({
+               rooms,
+               featuredRooms,
+               sortedRooms: rooms,
+               loading: false,
+               price: maxPrice,
+               maxPrice,
+               maxSize
+              });
+      
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   componentDidMount() {
-    // this.getData();
-    let rooms = this.formatData(items);
-    let featuredRooms = rooms.filter(room => room.featured === true);
-    //
-    let maxPrice = Math.max(...rooms.map(item => item.price));
-    let maxSize = Math.max(...rooms.map(item => item.size));
-    this.setState({
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
-      //
-      price: maxPrice,
-      maxPrice,
-      maxSize
-    });
+    this.fetchRooms();
   }
 
   formatData(items) {

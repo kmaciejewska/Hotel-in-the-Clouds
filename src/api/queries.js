@@ -97,16 +97,6 @@ export const listRooms = /* GraphQL */ `
         featured
         breakfast
         cleaniness
-        bookings {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
