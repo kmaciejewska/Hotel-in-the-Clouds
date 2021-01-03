@@ -24,7 +24,8 @@ Component {
     pets: false
   };
 
-  //getData from Database 
+  //getData from Database
+   
 
   componentDidMount() {
     // this.getData();

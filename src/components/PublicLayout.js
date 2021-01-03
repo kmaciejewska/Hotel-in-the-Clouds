@@ -23,7 +23,8 @@ export const PublicLayout = (props) => <div>
     <Route exact path="/rooms/" component={Rooms} />
     <Route exact path="/profile/" component={Profile} />
     <Route exact path="/rooms/:slug" component={SingleRoom} />
-    <Route exact path="/booknow/:slug" component={BookNow} />        
+    <Route exact path="/booknow/:slug" component={BookNow} /> 
+    <Route exact path="/error" component={Error} />       
   </Switch>
 <Footer/>
 </div>
