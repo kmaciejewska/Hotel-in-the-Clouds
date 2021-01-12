@@ -1,0 +1,7 @@
+¿eby móc dodawaæ i edytowaæ zadania trzeba zamieniæ task.txt z task.js, statusline.txt ze statusline.js 
+i statuslinestyle.txt ze statusline.scss, bo uzna³am, ¿e staff nie powinien sam dodawaæ zadañ,
+ale trzeba jakoœ sprawdziæ czy dzia³a
+
+zainstalowaæ:
+npm install node-sass@4.14.1
+npm i @syncfusion/ej2-react-schedule
