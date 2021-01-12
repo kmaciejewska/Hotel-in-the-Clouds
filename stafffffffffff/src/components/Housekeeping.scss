@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+$purple:#430253;
+$grey: #686d76;
+$white: #ffffff;
+$gold: #edc988;
+$green: rgb(209, 201, 245);
+$yellow: #e3baf8;
+$pink:#f0c2ed;
+$red: #e240c7;
+$highlight: #8b03ca;
+
+/* {
+  margin: 0;
+  padding: 0;
+}*/
+
+#Housekeeping {
+ 
+  color: $highlight;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.HousekeepingComponent h5 {
+  margin: 2rem 0;
+  font-weight: 400;
+  font-size: 44px;
+  font-family: 'Staatliches';
+}
+
+.HousekeepingComponent main {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $purple;
+  background-image: url("../images/background.jpg");
+  align-items: center;
+  width: fit-content;
+  font-family: 'Staatliches';
+}
+
+.HousekeepingComponent section{
+  display: flex;
+  width: 70rem;
+  margin-bottom: 2rem;
+  font-family: 'Staatliches';
+}
+
+.button {
+  border: 1px solid $gold;
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 0.3rem 1.5rem;
+  background-color: $green;
+  border-color: $green;
+  color: $purple;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+
+  &:hover {
+    background-color: $highlight;
+    border-color: $highlight;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $highlight;
+    background-color: $highlight;
+    color: $pink;
+  }
+
+  &.addTask {
+    font-size: 3rem;
+    padding: 0 0 0.4rem 0;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 1rem;
+    margin-top: 2rem;
+  }
+
+  &.moveTask {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0;
+    line-height: 1rem;
+  }
+
+  &.delete {
+    background-color: $pink;
+    border-color: $pink;
+
+    &:hover {
+      background-color: $red;
+      border-color: $red;
+    }
+  }
+}
+
+/*@media only screen and (max-width: 75rem) {
+  section {
+    width: 100%;
+    flex-direction: column;
+  }
+}*/
