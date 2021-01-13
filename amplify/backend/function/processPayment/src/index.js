@@ -24,7 +24,7 @@ const getUserEmail = async (event) => {
 exports.handler = async (event) => {
   try {
     const { id, cart, total, token, address } = event.arguments.input;
-    const { username } = event.identity.claims;
+    const { username } = event.identity.claims; //we set it separately beacause it is not in the input - line 9
     const email = await getUserEmail(event);
 
     await stripe.charges.create({

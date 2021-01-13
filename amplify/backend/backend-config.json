@@ -52,6 +52,20 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
+    },
+    "AdminQueries5ddfcf0d": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "cognitocf0c6096",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
     }
   },
   "storage": {
@@ -83,6 +97,27 @@
           ]
         }
       }
+    },
+    "AdminQueries": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "cognitocf0c6096",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "AdminQueries5ddfcf0d",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ]
     }
   }
 }

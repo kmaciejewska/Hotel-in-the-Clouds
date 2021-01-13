@@ -14,7 +14,7 @@ export default class SingleRoom extends Component {
     super(props)
    // console.log(this.props)
    this.state = {
-     slug:this.props.match.params.slug,
+     name:this.props.match.params.name,
      defaultBcg
    };
   }
@@ -24,7 +24,7 @@ export default class SingleRoom extends Component {
 
   render() {
     const {getRoom} = this.context;
-    const room = getRoom(this.state.slug);
+    const room = getRoom(this.state.name);
     if(!room) {
       return( <div className = "error">
         <h3>no such room could be found...</h3>
@@ -42,12 +42,10 @@ export default class SingleRoom extends Component {
       extras,
       breakfast,
       pets,
-      images} = room;
-      const [main, ...defaultImages] = images;
-    console.log(defaultImages);
+      image} = room;
     return (
       <>
-      <StyledHero img={images[0] || this.state.defaultBcg}>
+      <StyledHero img={image || this.state.defaultBcg}>
         <Banner title={`${name} room`}>
           <Link to='/rooms' className="btn-primary">
             back to rooms
@@ -55,11 +53,7 @@ export default class SingleRoom extends Component {
         </Banner>
       </StyledHero>
       <section className="single-room">
-          <div className="single-room-images">
-            {defaultImages.map((item, index) => (
-              <img key={index} src={item} alt={name} />
-            ))}
-          </div>
+          
           <div className="single-room-info">
             <article className="desc">
               <h3>details</h3>
@@ -79,14 +73,9 @@ export default class SingleRoom extends Component {
           </div>
         </section>
         <section className="room-extras">
-          <h6>extras </h6>
-          <ul className="extras">
-            {extras.map((item, index) => (
-              <li key={index}>- {item}</li>
-            ))}
-          </ul>
+          
               <div className="book-now">
-                <Link to={`/booknow/${this.state.slug}`} className="btn-primary-book">Book Now</Link>
+                <Link to={`/booknow/${this.state.name}`} className="btn-primary-book">Book Now</Link>
               </div>
         </section>
       </>

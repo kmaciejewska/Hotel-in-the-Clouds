@@ -34,7 +34,7 @@ Component {
         query: listRooms,
         authMode: "API_KEY"
       });
-      let rooms = this.formatData(data.listRooms.items);
+      let rooms = data.listRooms.items;
       let featuredRooms = rooms.filter(room => room.featured === true);
 
       let maxPrice = Math.max(...rooms.map(item => item.price));
