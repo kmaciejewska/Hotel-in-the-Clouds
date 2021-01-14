@@ -6,7 +6,16 @@ import { API, graphqlOperation } from "aws-amplify";
 import config from "../aws-exports";
 
 // Pages
+//admin
 import Admin from "../pages/admin/Admin";
+import AdminHome from "../pages/admin/Home";
+import Rooms from "../pages/admin/Rooms";
+import Statistics from "../pages/admin/Statistics";
+import Payments from "../pages/admin/Payments";
+import Reviews from "../pages/admin/Reviews";
+import AError from "../pages/admin/Error";
+import Notifications from "../pages/admin/Notifications";
+import Finances from "../pages/admin/Finances";
 
 //staff
 import StaffHome from "../pages/staff/Home";
@@ -46,6 +55,13 @@ function ProtectedLayout() {
         <>
           <Switch>
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/home" component={AdminHome} />
+            <Route exact path="/admin/rooms" component={Rooms} />
+            <Route exact path="/admin/statistics" component={Statistics} />
+            <Route exact path="/admin/payments" component={Payments} />
+            <Route exact path="/admin/reviews" component={Reviews} />
+            <Route exact path="/admin/notifications" component={Notifications} />
+            <Route exact path="/admin/finances" component={Finances} />
             <Route exact path="/staff" component={StaffHome} />
             <Route exact path="/staff/housekeeping" component={Housekipping} />
             <Route exact path="/staff/bookings/" component={Bookings} />

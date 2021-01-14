@@ -59,26 +59,6 @@ async function listClients(limit) {
 }
 
 const Admin = () => {
-  //check if it is admin
-  const [isAdmin, updateAdminInfo] = useState(false);
-  useEffect(() => {
-    // Get the AWS credentials for the current user from Identity Pools.
-    Auth.currentSession()
-      .then((cognitoUser) => {
-        const {
-          idToken: { payload },
-        } = cognitoUser;
-        // Loop through the groups that the user is a member of
-        // Set isAdmin to true if the user is part of the Admins group
-        payload["cognito:groups"] &&
-          payload["cognito:groups"].forEach((group) => {
-            if (group === "Admins") updateAdminInfo(true);
-          });
-      })
-      .catch((err) => console.log(err));
-  }, []);
-  //
-
   const [image, setImage] = useState(null);
   const [roomDetails, setRoomDetails] = useState({
     name: "",
@@ -135,7 +115,7 @@ const Admin = () => {
 
   return (
     <div>
-      {isAdmin ? (
+     
         <section className="admin-wrapper">
           <div align="center" className="Admin">
             <button onClick={addToGroup}>Add to Staff Group</button>
@@ -304,16 +284,9 @@ const Admin = () => {
             </form>
           </section>
         </section>
-      ) : (
-        <div className="error">
-          <h3>Error accessing page...</h3>
-          <Link to="/" className="btn-primary">
-            back to home
-          </Link>
-        </div>
-      )}
+      
     </div>
   );
 };
 
-export default withAuthenticator(Admin, true);
+export default Admin;
