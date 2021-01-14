@@ -1,7 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// Amplify
-import Amplify from "aws-amplify";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 
 // Pages
 import Home from "../pages/Home"
@@ -24,7 +22,7 @@ export const PublicLayout = (props) => <div>
     <Route exact path="/profile/" component={Profile} />
     <Route exact path="/rooms/:slug" component={SingleRoom} />
     <Route exact path="/booknow/:slug" component={BookNow} /> 
-    <Route exact path="/error" component={Error} />       
+    <Route component={Error} />       
   </Switch>
 <Footer/>
 </div>

@@ -1,6 +1,9 @@
 import React, {Component } from  'react'
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation } from 'aws-amplify';
 import { listRooms } from "../api/queries";
+import awsmobile from '../aws-exports';
+
+API.configure(awsmobile);
 
 
 const RoomContext = React.createContext();
@@ -28,13 +31,14 @@ Component {
   //getData from Database
   fetchRooms = async () => {
     try {
-      
       // Switch authMode to API_KEY for public access
       const { data } = await API.graphql({
         query: listRooms,
         authMode: "API_KEY"
       });
+
       let rooms = data.listRooms.items;
+      console.log(rooms);
       let featuredRooms = rooms.filter(room => room.featured === true);
 
       let maxPrice = Math.max(...rooms.map(item => item.price));
@@ -69,9 +73,9 @@ Component {
     return tempItems;
   }
 
-  getRoom = (slug) => {
+  getRoom = (id) => {
     let tempRooms = [...this.state.rooms];
-    const room = tempRooms.find((room)=>room.slug ===slug);
+    const room = tempRooms.find((room)=>room.id ===id);
     return room;
   };
   handleChange = event => {
