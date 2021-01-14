@@ -21,8 +21,7 @@ export const PublicLayout = (props) => <div>
     <Route exact path="/rooms/" component={Rooms} />
     <Route exact path="/profile/" component={Profile} />
     <Route exact path="/rooms/:id" component={SingleRoom} />
-    <Route exact path="/booknow/:id" component={BookNow} /> 
-    <Route component={Error} />       
+    <Route exact path="/booknow/:id" component={BookNow} />       
   </Switch>
 <Footer/>
 </div>

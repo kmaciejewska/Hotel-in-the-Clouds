@@ -14,6 +14,7 @@ const {
 } = config;
 
 Amplify.configure(config);
+Auth.configure(config);
 
 async function addToGroup() {
   let apiName = "AdminQueries";
