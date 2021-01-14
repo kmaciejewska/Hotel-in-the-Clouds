@@ -5,8 +5,8 @@ import { withAuthenticator } from "aws-amplify-react";
 import Amplify, { Auth } from "aws-amplify";
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { Link } from "react-router-dom";
-import { createRoom } from "../api/mutations";
-import config from "../aws-exports";
+import { createRoom } from "../../api/mutations";
+import config from "../../aws-exports";
 
 const {
   aws_user_files_s3_bucket_region: region,

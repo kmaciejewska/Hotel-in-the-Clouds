@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { RoomContext } from '../context/context'
+import { RoomContext } from '../../context/context'
 import { Link } from 'react-router-dom'
 
 //library used to calculate time
@@ -7,7 +7,7 @@ import moment from 'moment'
 //library use to pick date from claendar
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import defaultBcg from '../images/room-3.jpeg'
+import defaultBcg from '../../images/room-3.jpeg'
 
 
 export default class BookNow extends Component {

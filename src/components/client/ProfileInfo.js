@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { UserContext, UserProvider } from '../context/contextU'
+import { UserContext, UserProvider } from '../../context/contextU'
 
 export default class ProfileInfo extends Component {
     render() {

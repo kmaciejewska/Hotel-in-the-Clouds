@@ -3,7 +3,6 @@ import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { SiYoutube } from "react-icons/si";
 
-
 export default class Footer extends Component {
     constructor(props) {
         super(props);

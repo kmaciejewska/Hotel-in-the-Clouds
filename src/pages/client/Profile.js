@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfileInfo from '../components/ProfileInfo'
+import ProfileInfo from '../../components/client/ProfileInfo'
 
 export default class Profile extends Component {
     render() {

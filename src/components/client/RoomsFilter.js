@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { RoomContext } from "../context/context";
+import { RoomContext } from "../../context/context";
 import Title from "./Title";
 
 // get all unique values from datacontext 
@@ -43,8 +43,7 @@ const RoomsFilter = ({ rooms }) => {
     </option>
   ));
 
-
-
+  
   return (
     <section className="filter-container">
       <Title title="search rooms" />
