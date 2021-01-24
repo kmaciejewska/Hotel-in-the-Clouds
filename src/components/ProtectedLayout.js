@@ -65,7 +65,7 @@ function ProtectedLayout() {
               <Route path="/admin/rooms">
                 <Rooms />
               </Route>
-              <Route path="/admin/statistic">
+              <Route path="/admin/statistics">
                 <Statistics />
               </Route>
               <Route path="/admin/payments">

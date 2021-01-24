@@ -38,7 +38,7 @@ export default class Navbar extends Component {
                          <Link to="/admin/reviews">Reviews</Link>
                     </li>
                     <li>
-                         <Link to="/payments">Payments</Link>
+                         <Link to="/admin/payments">Payments</Link>
                     </li>
                     <li>
                          <Link to="/admin/finances">Finance</Link>
