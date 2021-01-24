@@ -495,10 +495,36 @@ h6 {
   }
 }
 /* end of single room*/
+.title-bookings {
+margin-top: 6%;
+margin-left: 8%;
+width: 30em;
+  background:var(--mainWhite);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  padding:2rem;
+}
+
+
+.rest-info {
+  float: left;
+margin-top: 6%;
+margin-right: 3%;
+margin-left: 2%;
+width: 60em;
+  background:var(--mainWhite);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  padding:4rem;
+}
+
 /*start of profile-info*/
 .profile-info {
   float: right;
 margin-top: 6%;
+margin-right: 5%;
 width: 40em;
   background:var(--mainWhite);
   box-sizing: border-box;
@@ -517,14 +543,25 @@ width: 40em;
 
 }
 .profile-image img {
-  left: 50%;
+ 
+  position: relative;
+  margin-left: 25%;
   border-radius: 50%;
   width: 15em;
   transition: var(--mainTransition);
 }
 
 
-
+.bookingc-form {
+  position: absolute;
+  top: 15%;
+  left: 36%;
+  background:var(--mainWhite);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  padding:4rem;
+}
 
 /*end of profile*/
 
@@ -655,7 +692,51 @@ float: right;
 
 }
 
+.checkout-wrapper {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+}
+.stripe-section {
+  margin-top: 2rem;
+}
 
+@media screen and (max-width: 933px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  #logo {
+    padding: 1rem;
+  }
+
+  .book-details {
+    margin-top: 4rem;
+  }
+}
+
+.bookingslist {
+  padding:4rem ;
+  float:center;
+}
+.bookingslist-center {
+  float:center;
+  width: 40vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
 
 
 /* roomlist */
