@@ -8,13 +8,22 @@ export default class Navbar extends Component {
   state = { isOpen: false };
   //static contextType = UserContext;
 
-  /*handleToggle = () => {
+  handleToggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
-  };*/
+  };
 
   render() {
     //const {logged} = this.context;
     return (
+      <UserContext.Consumer>
+        {(UserContext) => {
+          const {
+            logged,
+            handleLogoutClick,
+            picture,
+            name,
+          } = UserContext;
+          return (
             <nav className="navbar">
               <div className="nav-center">
                 <div className="nav-header">
@@ -29,18 +38,56 @@ export default class Navbar extends Component {
                     <FaAlignRight className="nav-icon" />
                   </button>
                 </div>
-                
+                <ul
+                  className={
+                    this.state.isOpen ? "nav-links show-nav" : "nav-links"
+                  }
+                >
                   <li>
                     <Link to="/">Home</Link>
                   </li>
                   <li>
                     <Link to="/rooms">Rooms</Link>
                   </li>
-               
+                </ul>
+
+                <div className="nav-login">
+                  {logged ? (
+                    <div>
+                      <button
+                        type="button"
+                        id="logout"
+                        className="nav-login-btn"
+                        onClick={handleLogoutClick}
+                      >
+                        
+                        Log out
+                      </button>
+                    </div>
+                  ) : (
+                   
+                      <Link to={`/login`} className="nav-login-btn">
+                  Log in
+                  </Link>
+                      
+                    
+                  )}
+                </div>
+                <div>
+                  {logged && (
+                    <div>
+                      Welcome {name}
+                      <Link to={`/profile`} className="nav-login-btn">
+                        View Account
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
             </nav>
           );
-        
-      
+        }}
+      </UserContext.Consumer>
+    );
   }
 }

@@ -107,34 +107,20 @@ h6 {
   outline: none;
 }
 .nav-login {
-  margin-left:40rem;
+  margin-left:25rem;
   transition: var(--mainTransition);
   padding: 0.1rem;
 }
 .nav-login-btn {
-  float:left;
+  float: left;
   background-color:var(--offWhite);
-	border-radius:10rem;
+	border-radius:8rem;
   border:0.2rem solid var(--primaryColor);
   letter-spacing: var(--mainSpacing);
   font-size:1rem;
-  padding:0.2rem 0.2rem
+  padding:0.1rem 0.1rem
 }
 
-
-
-.nav-image  {
-  margin-left: 0rem;
-
-  transition: var(--mainTransition);
-}
-.nav-image img {
-  float:left;
-  display: flex;
-  border-radius: 50%;
-  width: 4em;
-  transition: var(--mainTransition);
-}
 .nav-icon {
   font-size: 1.5rem;
   color: var(--primaryColor);
@@ -495,6 +481,9 @@ h6 {
   }
 }
 /* end of single room*/
+
+
+
 .title-bookings {
 margin-top: 6%;
 margin-left: 8%;
@@ -555,12 +544,12 @@ width: 40em;
 .bookingc-form {
   position: absolute;
   top: 15%;
-  left: 26%;
+  left: 36%;
   background:var(--mainWhite);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  padding:10rem;
+  padding:4rem;
 }
 
 /*end of profile*/
@@ -693,7 +682,8 @@ float: right;
 }
 
 .checkout-wrapper {
-  width: 100%;
+  width: 60%;
+  margin: auto;
   text-align: center;
 }
 .checkout-form {
@@ -702,13 +692,12 @@ float: right;
   margin: 3rem 0;
 }
 .stripe-section {
-  margin-top: 3rem;
-  margin-left: 0rem;
+  margin-top: 2rem;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 933px) {
   html {
-    font-size: 60.5%;
+    font-size: 62.5%;
   }
 
   nav {
@@ -716,7 +705,11 @@ float: right;
   }
 
   #logo {
-    padding: 2rem;
+    padding: 1rem;
+  }
+
+  .book-details {
+    margin-top: 4rem;
   }
 }
 

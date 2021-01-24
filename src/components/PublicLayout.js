@@ -8,6 +8,7 @@ import BookNow from "../pages/client/BookNow";
 import SingleRoom from "../pages/client/SingleRoom";
 import Profile from "../pages/client/Profile";
 import Checkout from "../pages/client/Checkout";
+import LoginPage from "../pages/client/LoginPage";
 import Error from "../pages/client/Error";
 
 // Components
@@ -27,14 +28,17 @@ export const PublicLayout = (props) => <div>
       <Route path="/profile">
         <Profile/>
       </Route>
-      <Route path="/rooms/:slug">
+      <Route path="/rooms/:name">
         <SingleRoom/>
       </Route>
-      <Route path="/booknow/:slug">
+      <Route path="/booknow/:name">
         <BookNow/>
       </Route>
       <Route path="/checkout">
         <Checkout/>
+      </Route>
+      <Route path="/login">
+        <LoginPage/>
       </Route>
     </Switch>
     <Footer/>
