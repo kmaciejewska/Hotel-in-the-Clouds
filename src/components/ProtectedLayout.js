@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuthenticator } from "aws-amplify-react";
 import Amplify, { Auth } from "aws-amplify";
 import { API, graphqlOperation } from "aws-amplify";
@@ -22,7 +22,7 @@ import StaffHome from "../pages/staff/Home";
 import Housekipping from "../pages/staff/Housekipping";
 import Error from "../pages/staff/Error";
 import Bookings from "../pages/staff/Bookings";
-import Navbar from "../components/staff/Navbar";
+import Navbar from "../components/admin/Navbar";
 
 Amplify.configure(config);
 Auth.configure(config);
@@ -53,19 +53,44 @@ function ProtectedLayout() {
     <div>
       {isAdmin || isStaff ? (
         <>
-          <Switch>
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/admin/home" component={AdminHome} />
-            <Route exact path="/admin/rooms" component={Rooms} />
-            <Route exact path="/admin/statistics" component={Statistics} />
-            <Route exact path="/admin/payments" component={Payments} />
-            <Route exact path="/admin/reviews" component={Reviews} />
-            <Route exact path="/admin/notifications" component={Notifications} />
-            <Route exact path="/admin/finances" component={Finances} />
-            <Route exact path="/staff" component={StaffHome} />
-            <Route exact path="/staff/housekeeping" component={Housekipping} />
-            <Route exact path="/staff/bookings/" component={Bookings} />
-          </Switch>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route exact path="/admin">
+                <Admin />
+              </Route>
+              <Route exact path="/admin/home">
+                <AdminHome />
+              </Route>
+              <Route path="/admin/rooms">
+                <Rooms />
+              </Route>
+              <Route path="/admin/statistic">
+                <Statistics />
+              </Route>
+              <Route path="/admin/payments">
+                <Payments />
+              </Route>
+              <Route path="/admin/reviews">
+                <Reviews />
+              </Route>
+              <Route path="/admin/finances">
+                <Finances />
+              </Route>
+              <Route path="/admin/notifications">
+                <Notifications />
+              </Route>
+              <Route path="/staff">
+                <StaffHome/>
+              </Route>
+              <Route path="/staff/housekeeping">
+                <Housekipping/>
+              </Route>
+              <Route path="/staff/bookings">
+                <Bookings/>
+              </Route>
+            </Switch>
+          </Router>
         </>
       ) : (
         <Route component={Error} />
@@ -73,4 +98,4 @@ function ProtectedLayout() {
     </div>
   );
 }
-export default withAuthenticator(ProtectedLayout, true);
+export default withAuthenticator(ProtectedLayout, false);

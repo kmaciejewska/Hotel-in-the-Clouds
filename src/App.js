@@ -7,20 +7,32 @@ import Amplify from "aws-amplify";
 //layouts
 import ProtectedLayout from "./components/ProtectedLayout"
 import { PublicLayout } from "./components/PublicLayout"
+import Home from "./pages/client/Home"
+import Admin from "./pages/admin/Admin"
+import Navbar from "./components/client/Navbar"
+import Rooms from "./pages/client/Rooms";
 
 // Amplify Configurations
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
-
-function App() {
-  return <div>
+const App = () => {
+  return (
+    <Router>
     <Switch>
-      <Route path='/admin' component={ProtectedLayout} />
-      <Route path='/staff' component={ProtectedLayout} />
-      <Route path='/' component={PublicLayout} />
+      <Route exact path="/">
+        <PublicLayout/>
+      </Route>
+      <Route exact path="/admin">
+        <ProtectedLayout/>
+      </Route>
+      <Route path="/staff">
+        <ProtectedLayout/>
+      </Route>
     </Switch>
-  </div>
+  </Router>
+  );
+
 }
 
 export default App;
