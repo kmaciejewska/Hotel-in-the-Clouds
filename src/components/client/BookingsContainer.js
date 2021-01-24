@@ -1,5 +1,5 @@
 import React from "react";
-import { withUserConsumer } from "../contextU";
+import { withUserConsumer } from "../../context/contextU";
 import Loading from "./Loading";
 import BookingsList from "./BookingsList";
 

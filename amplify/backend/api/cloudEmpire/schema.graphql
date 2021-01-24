@@ -76,7 +76,6 @@ input ProcessBookingInput {
   cart: [CartItem]
   total: Float!
   token: String!        #token from stripe 
-  address: String       #?
 }
 
 enum BookingStatus {

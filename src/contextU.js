@@ -36,12 +36,6 @@ class UserProvider extends Component {
     return tempItems;
   }
 
-  getRoom = (slug) => {
-    let tempBookings = [...this.state.bookings];
-    const booking = tempBookings.find((booking)=>booking.slug ===slug);
-    return booking;
-  };
-
   handleLoginClick =() => {
       console.log("login in context")
     this.setState({logged : true});

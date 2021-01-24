@@ -14,8 +14,10 @@ export default class BookNow extends Component {
 
     constructor(props) {
         super(props);
+        console.log(this.props);
         this.state = {
-            slug: this.props.match.params.slug,
+            
+            name: this.props.match.params.name,
             defaultBcg,
             startDate: new Date(),
             endDate: new Date(),
@@ -25,7 +27,7 @@ export default class BookNow extends Component {
         this.handleChangeStart = this.handleChangeStart.bind(this);
     }
 
-
+  
 
     handleChangeStart(date) {
         this.setState({
@@ -44,12 +46,10 @@ export default class BookNow extends Component {
         return endDate.diff(startDate, "days");
     }
 
-
-
     static contextType = RoomContext;
     render() {
         const { getRoom } = this.context;
-        const room = getRoom(this.state.slug);
+        const room = getRoom(this.state.name);
         const { startDate, endDate } = this.state;
         const daysLeft = this.calculateDaysLeft(startDate, endDate);
         if (!room) {
@@ -61,9 +61,8 @@ export default class BookNow extends Component {
             </div>
             );
         }
-        const { name, description, capacity, size, price, breakfast, pets, images } = room;
-        const [mainImg, ...defaultBcg] = images;
-
+        const { name, description, capacity, size, price, breakfast, pets, image } = room;
+        
 
         return (
             <>
@@ -74,7 +73,7 @@ export default class BookNow extends Component {
                     <section >
                         <div className="room-info1">
                             <article className="booking-img">
-                                <img src={mainImg || defaultBcg} alt="selected room" />
+                                <img src={image || defaultBcg} alt="selected room" />
                             </article>
                             <article className="info1">
                                 <h3>info</h3>
@@ -105,14 +104,14 @@ export default class BookNow extends Component {
                         <div >
                             Price per day : <span>Rs {price}</span>
                         </div><div>
-                            Total Price to be paid : <span >Rs {daysLeft * price}</span>
+                            Total Price to be paid : <span >Rs {price}</span>
                         </div>
                     </section>
 
                     <section >
                         <div>
                         <Link to="/rooms" className="booking-buttonleft"> return to rooms</Link>
-                         <Link to={`/booknow/${this.state.slug}`}   className="booking-buttonright">Book Now</Link>
+                         <Link to="/checkout/"className="booking-buttonright">Book Now</Link>
                         </div>
                     </section>
 

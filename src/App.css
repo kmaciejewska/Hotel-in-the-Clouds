@@ -555,12 +555,12 @@ width: 40em;
 .bookingc-form {
   position: absolute;
   top: 15%;
-  left: 36%;
+  left: 26%;
   background:var(--mainWhite);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  padding:4rem;
+  padding:10rem;
 }
 
 /*end of profile*/
@@ -693,8 +693,7 @@ float: right;
 }
 
 .checkout-wrapper {
-  width: 60%;
-  margin: auto;
+  width: 100%;
   text-align: center;
 }
 .checkout-form {
@@ -703,12 +702,13 @@ float: right;
   margin: 3rem 0;
 }
 .stripe-section {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-left: 0rem;
 }
 
-@media screen and (max-width: 933px) {
+@media screen and (max-width: 1200px) {
   html {
-    font-size: 62.5%;
+    font-size: 60.5%;
   }
 
   nav {
@@ -716,11 +716,7 @@ float: right;
   }
 
   #logo {
-    padding: 1rem;
-  }
-
-  .book-details {
-    margin-top: 4rem;
+    padding: 2rem;
   }
 }
 

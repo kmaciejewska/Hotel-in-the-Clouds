@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { RoomContext } from "../context";
-import { UserContext } from "../contextU";
+import { RoomContext } from "../../context/context";
+import { UserContext } from "../../context/contextU";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 const CARD_ELEMENT_OPTIONS = {
@@ -24,22 +24,28 @@ const CARD_ELEMENT_OPTIONS = {
 
 const CheckoutForm = () => {
 
-  const {checkout } = useContext(RoomContext);
+  const {checkout,getRoomID} = useContext(RoomContext);
   const {bookings} = useContext(UserContext);
-  const [orderDetails, setOrderDetails] = useState({ bookings, address: null, token: null });
+  const {total,rooms} = bookings[0];
+  const cart = rooms[0];
+  const [orderDetails, setOrderDetails] = useState({cart, total, address: null, token: null });
   
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
 
-  useEffect(() => {
+  console.log(bookings);
+  console.log(total);
+  console.log(cart);
+
+  /*useEffect(() => {
     if (orderDetails.token) {
       checkout(orderDetails);
       //clearCart();
       //history.push("/");
     }
-  }, [orderDetails]);
+  }, [orderDetails]);*/
 
   // Handle real-time validation errors from the card Element.
   const handleChange = (event) => {
@@ -69,12 +75,6 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="checkout-form">
-        <label htmlFor="checkout-address">Shipping Address</label>
-        <input
-          id="checkout-address"
-          type="text"
-          onChange={(e) => setOrderDetails({ ...orderDetails, address: e.target.value })}
-        />
         <div className="stripe-section">
           <label htmlFor="stripe-element"> Credit or debit card </label>
           <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />

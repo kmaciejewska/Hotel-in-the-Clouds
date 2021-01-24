@@ -72,7 +72,7 @@ export default class SingleRoom extends Component {
         <section className="room-extras">
           
               <div className="book-now">
-                <Link to={`/booknow/${this.state.name}`} className="btn-primary-book">Book Now</Link>
+                <Link to={`/booknow/${name}`} className="btn-primary-book">Book Now</Link>
               </div>
         </section>
       </>

@@ -1,6 +1,8 @@
 import React, {Component } from  'react'
 import { API, graphqlOperation } from 'aws-amplify';
 import { listRooms } from "../api/queries";
+import { processBooking } from "../api/mutations";
+import { v4 as uuidv4 } from "uuid";
 import awsmobile from '../aws-exports';
 
 API.configure(awsmobile);
@@ -49,8 +51,8 @@ Component {
                sortedRooms: rooms,
                loading: false,
                price: maxPrice,
-               maxPrice,
-               maxSize
+               maxPrice: maxPrice,
+               maxSize: maxSize
               });
       
     } catch (err) {
@@ -67,17 +69,38 @@ Component {
       let id = item.sys.id
       let images = item.fields.images.map(image => image.fields.file.url);
 
-      let room = {...item.fields,images:images,id };
+      let room = {...item.fields,image:images,id };
       return room;
     });
     return tempItems;
   }
 
-  getRoom = (id) => {
+  getRoom = (slug) => {
     let tempRooms = [...this.state.rooms];
-    const room = tempRooms.find((room)=>room.id ===id);
+    const room = tempRooms.find((room)=>room.slug ===slug);
     return room;
   };
+
+
+  checkout = async (orderDetails) => {
+    const payload = {
+      id: uuidv4(),
+      ...orderDetails
+    };
+    try {
+      await API.graphql(graphqlOperation(processBooking, { input: payload }));
+      console.log("Order is successful");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getRoomID = (sid) => {
+    let tempRooms = [...this.state.rooms];
+    const room = tempRooms.find((room)=>room.id ===sid);
+    return room;
+  }
+
   handleChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -142,6 +165,8 @@ m
     <RoomContext.Provider value={
       {...this.state,
         getRoom:this.getRoom,
+        getRoomID:this.getRoomID,
+        checkout:this.checkout,
         handleChange: this.handleChange
       }
     }>
@@ -152,7 +177,6 @@ m
 }
 
 const RoomConsumer = RoomContext.Consumer;
-
 
 
 export {RoomProvider,RoomConsumer,RoomContext}

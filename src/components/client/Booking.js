@@ -1,16 +1,15 @@
 import React, { useContext , useState } from 'react';
-import {Link} from 'react-router-dom';
 import moment from 'moment'
-import defaultImg from '../images/room-1.jpeg';
+import defaultImg from '../../images/room-1.jpeg';
 import PropTypes from "prop-types";
-import {RoomContext} from '../context'
+import {RoomContext} from '../../context/context'
 
 export default function Booking({booking}) {
 
-   const { id,dateFrom, dateTo, total, rooms} = booking;
+   const {id, dateFrom, dateTo, total, rooms} = booking;
    const {getRoomID} = useContext(RoomContext);
-    const room = getRoomID(rooms[0]);
-    const {name,slug,images,price} = room;
+    const room =rooms[0];
+    const {name,image,price} = room;
     var dateF = new Date(dateFrom); 
     var dateT = new Date(dateTo); 
     var date = new Date().getDate();
@@ -19,7 +18,7 @@ export default function Booking({booking}) {
     return(
        <article className="room">
            <div className="img-container">
-           <img src={images[0] || defaultImg} alt ="single room"/>
+           <img src={image || defaultImg} alt ="single room"/>
                <h3>{id}</h3>
                <div className="price-top">
                    <h6>${total}</h6>
@@ -34,11 +33,11 @@ export default function Booking({booking}) {
     );
 }
 
-Booking.propTypes = {
+/*Booking.propTypes = {
     booking:PropTypes.shape(
         {
             name:PropTypes.string.isRequired,
             string:PropTypes.string.isRequired,
         }
     )
-};
+};*/

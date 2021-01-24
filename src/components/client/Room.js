@@ -29,8 +29,7 @@ Room.propTypes = {
     room:PropTypes.shape(
         {
             name:PropTypes.string.isRequired,
-            string:PropTypes.string.isRequired,
-            images:PropTypes.arrayOf(PropTypes.string).isRequired,
+            image:PropTypes.string.isRequired,
             price:PropTypes.number.isRequired,
         }
     )
