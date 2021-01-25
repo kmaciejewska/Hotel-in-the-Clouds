@@ -544,7 +544,7 @@ width: 40em;
 .bookingc-form {
   position: absolute;
   top: 15%;
-  left: 36%;
+  left: 26%;
   background:var(--mainWhite);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -682,7 +682,7 @@ float: right;
 }
 
 .checkout-wrapper {
-  width: 60%;
+  width: 100%;
   margin: auto;
   text-align: center;
 }

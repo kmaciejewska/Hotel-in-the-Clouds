@@ -20,7 +20,11 @@
         "cloudempire80232a1f": {
           "deploymentBucketName": "amplify-authcra-devy-122252-deployment",
           "s3Key": "amplify-builds/cloudempire80232a1f-build.zip"
-        }
+        },
+        "addUserToClients": {},
+        "processPayment": {},
+        "createBooking": {},
+        "AdminQueries5ddfcf0d": {}
       }
     },
     "nonCFNdata": {

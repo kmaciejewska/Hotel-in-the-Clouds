@@ -19,8 +19,8 @@ export default class BookNow extends Component {
             
             name: this.props.match.params.name,
             defaultBcg,
-            startDate: new Date(),
-            endDate: new Date(),
+            startDate:Date.now(),
+            endDate: Date.now(),
 
         };
         this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -43,7 +43,10 @@ export default class BookNow extends Component {
     calculateDaysLeft(startDate, endDate) {
         if (!moment.isMoment(startDate)) startDate = moment(startDate);
         if (!moment.isMoment(endDate)) endDate = moment(endDate);
-        return endDate.diff(startDate, "days");
+        if (endDate.diff(startDate, "days") === 0) {
+            return 1;
+        }
+        return endDate.diff(startDate, "days") + 1;
     }
 
     static contextType = RoomContext;
@@ -52,6 +55,18 @@ export default class BookNow extends Component {
         const room = getRoom(this.state.name);
         const { startDate, endDate } = this.state;
         const daysLeft = this.calculateDaysLeft(startDate, endDate);
+        const start = new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "long",
+            day: "2-digit"
+          }).format(startDate);
+        const end = new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "long",
+            day: "2-digit"
+          }).format(endDate);
+        //const start = startDate.toLocaleString();
+        //const end = endDate.toLocaleString();
         if (!room) {
             return (<div className="error">
                 <h3>no such room could be found...</h3>
@@ -104,14 +119,15 @@ export default class BookNow extends Component {
                         <div >
                             Price per day : <span>Rs {price}</span>
                         </div><div>
-                            Total Price to be paid : <span >Rs {price}</span>
+                            Total Price to be paid : <span >Rs {daysLeft * price}</span>
                         </div>
                     </section>
 
                     <section >
                         <div>
                         <Link to="/rooms" className="booking-buttonleft"> return to rooms</Link>
-                         <Link to="/checkout/"className="booking-buttonright">Book Now</Link>
+                        <Link to={{pathname:"/checkout", aboutProps:{name:room, cena:daysLeft * price, dateFrom:start, dateTo:end}}} 
+                        className="booking-buttonright">Book Now</Link>
                         </div>
                     </section>
 

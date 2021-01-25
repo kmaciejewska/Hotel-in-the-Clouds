@@ -28,32 +28,8 @@ export const createRoom = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -84,32 +60,8 @@ export const updateRoom = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -140,32 +92,8 @@ export const deleteRoom = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -190,13 +118,6 @@ export const createRoomBooking = /* GraphQL */ `
         dateTo
         total
         rooms {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -217,13 +138,6 @@ export const createRoomBooking = /* GraphQL */ `
         breakfast
         cleaniness
         bookings {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -248,13 +162,6 @@ export const updateRoomBooking = /* GraphQL */ `
         dateTo
         total
         rooms {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -275,13 +182,6 @@ export const updateRoomBooking = /* GraphQL */ `
         breakfast
         cleaniness
         bookings {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -306,13 +206,6 @@ export const deleteRoomBooking = /* GraphQL */ `
         dateTo
         total
         rooms {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -333,13 +226,6 @@ export const deleteRoomBooking = /* GraphQL */ `
         breakfast
         cleaniness
         bookings {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -364,32 +250,8 @@ export const createBooking = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -414,32 +276,8 @@ export const updateBooking = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -464,32 +302,8 @@ export const deleteBooking = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }

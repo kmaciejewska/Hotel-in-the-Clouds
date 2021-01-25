@@ -4,6 +4,7 @@ import img from "../images/profil.jpg";
 import { listBookings } from "../api/queries";
 import awsmobile from "../aws-exports";
 import Amplify, { Auth } from "aws-amplify";
+import items from "../dataBookings"; 
 
 Amplify.configure(awsmobile);
 Auth.configure(awsmobile);
@@ -23,6 +24,7 @@ class UserProvider extends Component {
 
   //getData from Database
   fetchBookings = async () => {
+    
     try {
       // Switch authMode to AMAZON_COGNITO_USER_POOLS for non-public access
       const { data } = await API.graphql({
@@ -34,8 +36,9 @@ class UserProvider extends Component {
       console.log(bookings);
 
       this.setState({
-        bookings,
+        bookings
       });
+      this.setState({loading : false});
     } catch (err) {
       console.log(err);
     }
@@ -43,16 +46,6 @@ class UserProvider extends Component {
 
   componentDidMount() {
     this.fetchBookings();
-  }
-
-  formatData(items) {
-    let tempItems = items.map((item) => {
-      let id = item.sys.id;
-      let rooms = item.fields.rooms.map((room) => room.fields.roomid);
-      let booking = { ...item.fields, rooms: rooms, id };
-      return booking;
-    });
-    return tempItems;
   }
 
   getRoom = (slug) => {

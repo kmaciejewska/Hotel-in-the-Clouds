@@ -40,7 +40,6 @@ function ProtectedLayout() {
         } = cognitoUser;
         // Loop through the groups that the user is a member of
         // Set isAdmin to true if the user is part of the Admins group
-       cognitoUser.singOut();
         payload["cognito:groups"] &&
           payload["cognito:groups"].forEach((group) => {
             if (group === "Admins") updateAdminInfo(true);
@@ -99,4 +98,4 @@ function ProtectedLayout() {
     </div>
   );
 }
-export default withAuthenticator(ProtectedLayout);
+export default withAuthenticator(ProtectedLayout, true);

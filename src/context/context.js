@@ -64,17 +64,6 @@ Component {
     this.fetchRooms();
   }
 
-  formatData(items) {
-    let tempItems = items.map(item => {
-      let id = item.sys.id
-      let images = item.fields.images.map(image => image.fields.file.url);
-
-      let room = {...item.fields,image:images,id };
-      return room;
-    });
-    return tempItems;
-  }
-
   getRoom = (slug) => {
     let tempRooms = [...this.state.rooms];
     const room = tempRooms.find((room)=>room.name === slug);

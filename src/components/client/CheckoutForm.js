@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { RoomContext } from "../../context/context";
 import { UserContext } from "../../context/contextU";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { Link } from 'react-router-dom'
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -22,30 +23,32 @@ const CARD_ELEMENT_OPTIONS = {
   }
 };
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
 
-  const {checkout,getRoomID} = useContext(RoomContext);
-  const {bookings} = useContext(UserContext);
-  const {total,rooms} = bookings[0];
-  const cart = rooms[0];
-  const [orderDetails, setOrderDetails] = useState({cart, total, address: null, token: null });
+  const {checkout} = useContext(RoomContext);
+  const {logged} = useContext(UserContext);
+  const {total, dateFrom, dateTo, room} = props;
+  const {id, image, name, type, price, capacity, description, cleaniness, breakfast, pets} = room;
+  const cart = {id, image, name, type, price, capacity, description, cleaniness, breakfast, pets};
+
+  console.log(cart);
+  const [orderDetails, setOrderDetails] = useState({cart, dateFrom, dateTo, total, token: null});
   
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
 
-  console.log(bookings);
   console.log(total);
-  console.log(cart);
+  //console.log(cart);
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (orderDetails.token) {
       checkout(orderDetails);
       //clearCart();
       //history.push("/");
     }
-  }, [orderDetails]);*/
+  }, [orderDetails]);
 
   // Handle real-time validation errors from the card Element.
   const handleChange = (event) => {
@@ -73,20 +76,26 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="checkout-form">
-        <div className="stripe-section">
-          <label htmlFor="stripe-element"> Credit or debit card </label>
-          <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
-        </div>
-        <div className="card-errors" role="alert">
-          {error}
-        </div>
-      </div>
-      <button type="submit" className="btn">
-        Submit Payment
-      </button>
-    </form>
+    <div>
+      { logged ? (
+          <form onSubmit={handleSubmit}>
+          <div className="checkout-form">
+            <div className="stripe-section">
+              <label htmlFor="stripe-element"> Credit or debit card </label>
+              <CardElement id="stripe-element" options={CARD_ELEMENT_OPTIONS} onChange={handleChange} />
+            </div>
+            <div className="card-errors" role="alert">
+              {error}
+            </div>
+          </div>
+          <button type="submit" className="btn">
+            Submit Payment
+          </button>
+        </form>
+      ) : (
+        <Link to="/login" className="booking-buttonleft">login</Link>
+      )}
+    </div>
   );
 };
 

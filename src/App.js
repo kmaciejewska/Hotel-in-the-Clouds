@@ -20,7 +20,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={PublicLayout}></Route>
+        <Route exact path="/">
+          <PublicLayout/>
+        </Route>
         <Route exact path="/admin">
           <ProtectedLayout />
         </Route>

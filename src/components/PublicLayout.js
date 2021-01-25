@@ -15,7 +15,7 @@ import Error from "../pages/client/Error";
 import Navbar from "../components/client/Navbar"
 import Footer from "../components/client/Footer"
 
-export const PublicLayout = (props) => <div>
+export const PublicLayout = () => <div>
   <Router>
     <Navbar/>
     <Switch>
@@ -28,15 +28,9 @@ export const PublicLayout = (props) => <div>
       <Route path="/profile">
         <Profile/>
       </Route>
-      <Route path="/rooms/:name">
-        <SingleRoom/>
-      </Route>
-      <Route path="/booknow/:name">
-        <BookNow/>
-      </Route>
-      <Route path="/checkout">
-        <Checkout/>
-      </Route>
+      <Route path="/rooms/:name" component={SingleRoom}/>
+      <Route path="/booknow/:name" component={BookNow}/>
+      <Route path="/checkout" component={Checkout}/>
       <Route path="/login">
         <LoginPage/>
       </Route>

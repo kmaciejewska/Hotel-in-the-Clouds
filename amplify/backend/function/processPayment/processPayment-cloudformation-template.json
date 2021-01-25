@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-authcra-devy-122252-deployment",
-          "S3Key": "amplify-builds/processPayment-56785a54334b48725376-build.zip"
+          "S3Key": "amplify-builds/processPayment-4b6f4557535a52366d64-build.zip"
         }
       }
     },

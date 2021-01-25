@@ -75,6 +75,8 @@ input ProcessBookingInput {
   id: ID!
   cart: [CartItem]
   total: Float!
+  dateFrom: String
+  dateTo: String
   token: String!        #token from stripe 
 }
 
@@ -92,4 +94,6 @@ input CartItem {
   capacity: Int
   breakfast: Boolean
   pets: Boolean
+  description: String
+  cleaniness: String
 }

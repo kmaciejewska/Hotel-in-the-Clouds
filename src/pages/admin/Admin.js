@@ -84,7 +84,9 @@ const Admin = () => {
         capacity: "",
         price: "",
         cleaniness: "",
-        featured: false
+        featured: false,
+        breakfast: false,
+        pets: false
       });
     } catch (err) {
       console.log("error creating todo:", err);

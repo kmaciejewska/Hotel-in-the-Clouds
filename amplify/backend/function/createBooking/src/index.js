@@ -2,9 +2,9 @@ const { v4: uuidv4 } = require("uuid");
 const AWS = require("aws-sdk");
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const BOOKING_TABLE = "Booking-4ihkwg33pjf75if6e73i2qpqxu-devy";
+const BOOKING_TABLE = "Booking-rdchjazczvdgba5o46r5aiheva-devy";
 const BOOKING_TYPE = "Booking";
-const ROOM_BOOKING_TABLE = "RoomBooking-4ihkwg33pjf75if6e73i2qpqxu-devys";
+const ROOM_BOOKING_TABLE = "RoomBooking-rdchjazczvdgba5o46r5aiheva-devy";
 const ROOM_BOOKING_TYPE = "RoomBooking";
 
 

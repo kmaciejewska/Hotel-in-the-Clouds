@@ -14,32 +14,8 @@ export const getBooking = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
@@ -62,13 +38,6 @@ export const listBookings = /* GraphQL */ `
         dateTo
         total
         rooms {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -98,13 +67,6 @@ export const listRooms = /* GraphQL */ `
         breakfast
         cleaniness
         bookings {
-          items {
-            id
-            room_id
-            booking_id
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -133,32 +95,8 @@ export const getRoom = /* GraphQL */ `
           id
           room_id
           booking_id
-          booking {
-            id
-            user
-            dateFrom
-            dateTo
-            total
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
-          room {
-            id
-            name
-            type
-            description
-            price
-            capacity
-            pets
-            image
-            featured
-            breakfast
-            cleaniness
-            createdAt
-            updatedAt
-          }
         }
         nextToken
       }
