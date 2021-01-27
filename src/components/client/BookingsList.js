@@ -5,7 +5,7 @@ const BookingsList = ({ bookings }) => {
   if (bookings.length === 0) {
     return (
       <div className="empty-search">
-        <h3>You have no bookking</h3>
+        <h3>You have no booking</h3>
       </div>
     );
   }

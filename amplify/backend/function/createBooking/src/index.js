@@ -54,6 +54,26 @@ const createRoomBooking = async (payload) => {
   await documentClient.batchWrite(params).promise();
 };
 
+/*var aws = require("aws-sdk");
+var ses = new aws.SES({ region: "us-west-2" });
+const sendEmail = async (payload) => {
+  var params = {
+    Destination: {
+      ToAddresses: payload.customer,
+    },
+    Message: {
+      Body: {
+        Text: { Data: payload.booking },
+      },
+
+      Subject: { Data: "Your booking invoice" },
+    },
+    Source: "SourceEmailAddress",
+  };
+ 
+  return ses.sendEmail(params).promise()
+};*/
+
 /*
  * Get booking details from processPayment lambda
  * Create a booking
@@ -72,6 +92,7 @@ exports.handler = async (event) => {
     await createRoomBooking(payload);
 
     // Note - function to email the invoice to the user
+    //await sendEmail(payload);
 
     return "SUCCESS";
   } catch (err) {

@@ -6,11 +6,8 @@ import Amplify from "aws-amplify";
 
 //layouts
 import ProtectedLayout from "./components/ProtectedLayout";
+import ProtectedLayoutStaff from "./components/ProtectedStaff";
 import { PublicLayout } from "./components/PublicLayout";
-import Home from "./pages/client/Home";
-import Admin from "./pages/admin/Admin";
-import Navbar from "./components/client/Navbar";
-import Rooms from "./pages/client/Rooms";
 
 // Amplify Configurations
 import awsExports from "./aws-exports";
@@ -27,7 +24,7 @@ const App = () => {
           <ProtectedLayout />
         </Route>
         <Route path="/staff">
-          <ProtectedLayout />
+          <ProtectedLayoutStaff />
         </Route>
       </Switch>
     </Router>

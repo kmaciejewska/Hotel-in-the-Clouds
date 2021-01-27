@@ -118,20 +118,20 @@ const Admin = () => {
   return (
     <div>
      
-        <section className="admin-wrapper">
-          <div align="center" className="Admin">
+        <section lang="en">
+          <div align="center">
             <button onClick={addToGroup}>Add to Staff Group</button>
             <button onClick={() => listClients(20)}>List Clients</button>
           </div>
 
-          <section>
+          <section lang = "en" className="a-form">
             <header className="form-header">
               <h3>Add New Room</h3>
             </header>
-            <form className="form-wrapper" onSubmit={handleSubmit}>
+            <form lang="en" onSubmit={handleSubmit}>
               <div className="form-image">
                 {image ? (
-                  <img className="image-preview" src={image} alt="" />
+                  <img className="img-wrapper" src={image} alt="" />
                 ) : (
                   <input
                     type="file"

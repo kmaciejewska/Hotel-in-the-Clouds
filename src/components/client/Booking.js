@@ -7,9 +7,11 @@ import {RoomContext} from '../../context/context'
 export default function Booking({booking}) {
 
    const {id, dateFrom, dateTo, total, rooms} = booking;
+   //console.log(rooms.items[0].room.id);
    const {getRoomID} = useContext(RoomContext);
-    const room =rooms[0];
-    const {name,image,price} = room;
+    const room =getRoomID(rooms.items[0].room.id);
+    console.log(room);
+    const {name, img, price} = room;
     var dateF = new Date(dateFrom); 
     var dateT = new Date(dateTo); 
     var date = new Date().getDate();
@@ -18,15 +20,16 @@ export default function Booking({booking}) {
     return(
        <article className="room">
            <div className="img-container">
-           <img src={image || defaultImg} alt ="single room"/>
-               <h3>{id}</h3>
+           <img src={img || defaultImg} alt ="single room"/>
+               <h3>{name}</h3>
                <div className="price-top">
                    <h6>${total}</h6>
                </div>      
            </div>
            <p className="room-info">
             
-               <h5>{moment(dateF).format('DD-MM-YYYY')}</h5>
+               <h5>From: {moment(dateF).format('DD-MM-YYYY')}</h5>
+               <h5>To: {moment(dateT).format('DD-MM-YYYY')}</h5>
                </p>
        </article>
 

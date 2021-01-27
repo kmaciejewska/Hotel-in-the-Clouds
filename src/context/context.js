@@ -78,7 +78,7 @@ Component {
     };
     try {
       await API.graphql(graphqlOperation(processBooking, { input: payload }));
-      console.log("Order is successful");
+      alert("Order is successful");
     } catch (err) {
       console.log(err);
     }

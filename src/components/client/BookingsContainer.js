@@ -4,9 +4,15 @@ import Loading from "./Loading";
 import BookingsList from "./BookingsList";
 
 function BookingContainer({ context }) {
-  const { loading, bookings } = context;
+  const { loading, bookings, logged } = context;
   if (loading) {
     return <Loading />;
+  } else if (!logged) {
+    return (
+      <div className="empty-search">
+        <h3>You must be signed in to view bookings</h3>
+      </div>
+    )
   }
   return (
     <>

@@ -34,6 +34,7 @@ type RoomBooking
     rules: [
       # allow admins to create roombookings for customers by using customer email in lambda
       { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: private, operations: [read] }
       { allow: groups, groups: ["Admins"] }
     ]
   ) {
@@ -50,6 +51,7 @@ type Booking
     rules: [
       # only owner can see his bookings
       { allow: owner, identityClaim: "email", ownerField: "customer" }
+      { allow: private, operations: [read] }
       # allow admins to view bookings
       { allow: groups, groups: ["Admins"] }
     ]

@@ -17,12 +17,7 @@ export default class Navbar extends Component {
     return (
       <UserContext.Consumer>
         {(UserContext) => {
-          const {
-            logged,
-            handleLogoutClick,
-            picture,
-            name,
-          } = UserContext;
+          const { logged, handleLogoutClick, handleViewClick, name } = UserContext;
           return (
             <nav className="navbar">
               <div className="nav-center">
@@ -60,17 +55,13 @@ export default class Navbar extends Component {
                         className="nav-login-btn"
                         onClick={handleLogoutClick}
                       >
-                        
                         Log out
                       </button>
                     </div>
                   ) : (
-                   
-                      <Link to={`/login`} className="nav-login-btn">
-                  Log in
-                  </Link>
-                      
-                    
+                    <Link to={`/login`} className="nav-login-btn">
+                      Log in
+                    </Link>
                   )}
                 </div>
                 <div>
@@ -78,7 +69,9 @@ export default class Navbar extends Component {
                     <div>
                       Welcome {name}
                       <Link to={`/profile`} className="nav-login-btn">
-                        View Account
+                        <button type="button" className="nav-login-btn" onClick={handleViewClick}>
+                          View Account
+                        </button>
                       </Link>
                     </div>
                   )}

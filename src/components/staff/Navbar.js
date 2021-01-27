@@ -1,42 +1,46 @@
-import React, { Component } from 'react';
-import logo from '../../images/logo2.svg'
-import {FaAlignRight} from 'react-icons/fa'
-import {Link} from 'react-router-dom'
- 
+import React, { Component } from "react";
+import logo from "../../images/logo2.svg";
+import { FaAlignRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 export default class Navbar extends Component {
-    state={
-        isOpen:false
-    }
-    handleToogle = () =>{
-        this.setState({isOpen:!this.state.isOpen})
-    }
-    render() {
-        return <nav className="navbar">
+  state = {
+    isOpen: false,
+  };
+  handleToogle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
+  render() {
+    return (
+      <nav className="navbar">
         <div className="nav-center">
-        <div className="nav-header">
-        <Link to="/">
-        <img src={logo} alt="Beach Resort"/> 
-        </Link>
-        <button type="button" className="nav-btn" 
-        onClick={this.handleToogle}>
-            <FaAlignRight className="nav-icon"/>
-        </button>
-        </div> 
-        <ul className={this.state.isOpen?"nav-links show-nav":"nav-links"}>
+          <div className="nav-header">
+            <Link to="/">
+              <img src={logo} alt="Beach Resort" />
+            </Link>
+            <button
+              type="button"
+              className="nav-btn"
+              onClick={this.handleToogle}
+            >
+              <FaAlignRight className="nav-icon" />
+            </button>
+          </div>
+          <ul
+            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
+          >
             <li>
-                <Link to="/">Home</Link>
+              <Link to="/staff">Home</Link>
             </li>
             <li>
-                <Link to="/house-kipping">Housekeeping</Link>
+              <Link to="/staff/housekeeping">Housekeeping</Link>
             </li>
             <li>
-                <Link to="/bookings">Bookings</Link>
+              <Link to="/staff/bookings">Bookings</Link>
             </li>
-            </ul>   
+          </ul>
         </div>
-
-
-
-        </nav>;
-    }
+      </nav>
+    );
+  }
 }

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import img from "../images/profil.jpg";
-import { listBookings } from "../api/queries";
+import { getBooking, listBookings } from "../api/custom";
 import awsmobile from "../aws-exports";
 import Amplify, { Auth } from "aws-amplify";
-import items from "../dataBookings"; 
+import items from "../dataBookings";
+import { DataStore } from "@aws-amplify/datastore";
 
 Amplify.configure(awsmobile);
 Auth.configure(awsmobile);
@@ -24,7 +25,6 @@ class UserProvider extends Component {
 
   //getData from Database
   fetchBookings = async () => {
-    
     try {
       // Switch authMode to AMAZON_COGNITO_USER_POOLS for non-public access
       const { data } = await API.graphql({
@@ -33,31 +33,52 @@ class UserProvider extends Component {
       });
 
       let bookings = data.listBookings.items;
-      console.log(bookings);
+
+      var i = 0;
+      while (i < bookings.length) {
+        if (bookings[i].user != this.state.name) {
+          bookings.splice(i, 1);
+        } else {
+          ++i;
+        }
+      }
 
       this.setState({
-        bookings
+        bookings,
+        loading: false,
       });
-      this.setState({loading : false});
     } catch (err) {
       console.log(err);
     }
   };
 
   componentDidMount() {
+    Auth.currentSession()
+      .then((cognitoUser) => {
+        const {
+          idToken: { payload },
+        } = cognitoUser;
+
+        this.setState({ name: payload["cognito:username"] });
+        this.setState({ logged: true });
+        //console.log(this.state.name);
+      })
+      .catch((err) => console.log(err));
+
     this.fetchBookings();
   }
 
-  getRoom = (slug) => {
+  /*getRoom = (slug) => {
     let tempBookings = [...this.state.bookings];
     const booking = tempBookings.find((booking) => booking.slug === slug);
     return booking;
-  };
+  };*/
 
   handleLoginClick = (username) => {
     console.log("login in context");
     this.setState({ name: username });
     this.setState({ logged: true });
+    this.fetchBookings();
   };
 
   signOut = async () => {
@@ -70,7 +91,11 @@ class UserProvider extends Component {
 
   handleLogoutClick = () => {
     this.signOut();
-    this.setState({logged : false});
+    this.setState({ logged: false });
+  };
+
+  handleViewClick = () => {
+    this.fetchBookings();
   };
 
   render() {
@@ -81,6 +106,7 @@ class UserProvider extends Component {
           ...this.state,
           handleLoginClick: this.handleLoginClick,
           handleLogoutClick: this.handleLogoutClick,
+          handleViewClick: this.handleViewClick
         }}
       >
         {this.props.children}
